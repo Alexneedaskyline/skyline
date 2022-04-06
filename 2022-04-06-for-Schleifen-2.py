@@ -18,3 +18,4 @@
 #for i in range(41):
  #   print(-i+40)
 
+3 aufgaben der wahl lösen
