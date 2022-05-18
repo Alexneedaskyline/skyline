@@ -36,3 +36,5 @@ while eingabe != wort and versuch < 6:
                    ausgabe = ausgabe + stylize(eingabe[i], fg(255))
 
 print(ausgabe)
+
+for i in range()
