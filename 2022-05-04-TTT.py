@@ -26,7 +26,7 @@ while spiel_vorbei == False or runde != 9:
     eingabe_gültig = False
     while eingabe_gültig == False:
         feld = input("Welches Feld wollen Sie wählen? ")
-        if feld in ["1","2","3","4","5","6","7","8","9"] and not spielfeld[(int(feld) - 1) // 3][(int(feld) - 1) % 3] in ["x","o"]:  
+        if feld in ["1","2","3","4","5","6","7","8","9"] and spielfeld[(int(feld) - 1) // 3][(int(feld) - 1) % 3] in ["1","2","3","4","5","6","7","8","9"]:  
             eingabe_gültig = True
         else:
             print("Üngultige Eingabe")
@@ -54,6 +54,11 @@ while spiel_vorbei == False or runde != 9:
                                 (spielfeld[0][2] == spieler and spielfeld[1][1] == spieler and spielfeld[2][0] == spieler):
         print("Glückwunsch Spieler " + spieler + ", du hast gewonnen!")
         spiel_vorbei = True
+
+    if spielfeld[0][0] != "1" and spielfeld[0][1] != "2" and spielfeld[0][2] != "3" and spielfeld[1][0] != "4" and spielfeld[1][1]!= "5"\
+        and spielfeld[1][2] != "6" and spielfeld[2][0] != "7" and spielfeld[2][1] != "8" and spielfeld[2][2] != "9":
+       print(unentschieden...Leider) 
+        spiel_vorbei = True 
 
     # Spieler wechseln
     if spieler == "x":
