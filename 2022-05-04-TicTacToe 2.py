@@ -35,7 +35,11 @@ def gewinnprüfung(spielfeld):
         return False
 
 def computerzug(spielfeld):
+    freie_felder = []
+    
+
     feld = random.choice(["1", "2", "3", "4", "5", "6", "7", "8", "9"])
+    if spielfeld[(int(feld) - 1) // 3][(int(feld) - 1) % 3] in ["1","2","3","4","5","6","7","8","9"]
     print("Der Computer wählt Feld " + feld)
     return feld 
 
