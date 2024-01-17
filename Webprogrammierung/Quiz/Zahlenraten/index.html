@@ -1,46 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset=" UTF-8" />
-        <title>Zahlenraten</title>
-        <style>
-            body {
-                text-align: center;
-                background-image: url("Zahlen.jpg");
-                background-size: cover;
-                font-family: Helvetica;
-            }
-            h1 {
-                margin-top: 45vh;
-                font-size: 5vw;
-                color: white;
-                margin-bottom: 6vh;
-            }
-            a {
-                font-size: 3.5vw;
-                background-color: black;
-                padding: 1vw 3vw;
-                border-radius: 5vw;
-                color: white;
-            }
-            a:hover {
-                background-color: blue;
-                color: white;
-                cursor: pointer;
-                transition-duration: 0.5s;
-            }
-        </style>
-    </head>
-    <body>
-        <button onclick="deutsch()">Deutsch</button><button onclick="englisch()">Englisch</button>
-        <h1> Willkommen beim Zahlenrätsel</h1>
-        <a id="a">START</a>      
-        <script>
-            function deutsch() {
-                document.documentElementbyId("h1").innerHTML = "Willkommen beim Zahlenrätsel!"
-                document.documentElementbyId("h1").innerHTML = "Welcome to the number game!"
-            }
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Zahlenraten</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            text-align: center;
+            background-image: url("Zahlen.jpg");
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+        }
+        h1 {
+            margin-top: 45vh;
+            font-size: 5vw;
+            color: white;
+            margin-bottom: 6vh;
+        }
+        a {
+            font-family: 'Poppins', sans-serif;;
+            font-size: 3.5vw;
+            background-color: black;
+            padding: 1vw 3vw;
+            border-radius: 5vw;
+            color: white;
+        }
+        a:hover {
+            font-family: 'Poppins', sans-serif;;
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+            transition-duration: 0.5s;
+            
+        }
+        button {
+            font-family: 'Poppins', sans-serif;;
+            font-size: 1.5vw;
+            border-radius: 1.5vw;
+            background-color: white;
+            border: 0.5vw solid black;
+            padding: 0.5vw 1vw;
+            margin-left: 1vw;
+            margin-top: 0.5vw;
+            text-shadow: none;
+            transition-duration: 1s;
+        }
+        button:hover {
+            font-family: 'Poppins', sans-serif;;
+            background-color: black;
+            color: white;
+            border-color: white;
+            cursor: pointer;
+            transition-duration: 0.5s;
+            padding: 2.3vw 4.6vw;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: right;">
+        <button onclick="deutsch()">Deutsch</button>
+        <button onclick="englisch()">Englisch</button>
+    </div>
+    <h1 id="h1">Willkommen beim Zahlenrätsel</h1>
+    <a id="a">START</a>
 
-        </script> 
-    </body>
+    <script>
+        function deutsch() {
+            document.getElementById("h1").innerHTML = "Willkommen beim Zahlenrätsel!";
+        }
+
+        function englisch() {
+            document.getElementById("h1").innerHTML = "Welcome to the number game!";
+        }
+    </script> 
+</body>
 </html>
