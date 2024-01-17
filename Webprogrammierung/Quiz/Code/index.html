@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Code</title>
+        <meta charset="UTF-8">
+    </head>
+    <body id="hintergrund">
+        <h1 id="überschrift">JavaScript</h1>
+        <p id="knopfzeile">
+            <button id="knopf" onclick="ändern()">Hintergrundfarbe ändern!</button>
+        </p>
+        <p id="aufgabe">
+        </p>
+        <p id="rechenzeile">
+            <input id="eingabe">
+            <button id = "auswertung" onclick="auswertung()">Antwort abschicken!</button>
+        </p>
+        <p id="ereignis" style="text-align: center; font-size: 35px;"></p>
+        <script>
+            document.getElementById("überschrift").style.color = "blue";
+            document.getElementById("überschrift").style.fontSize = "50px";
+            document.getElementById("überschrift").style.textAlign = "center";
+            document.getElementById("hintergrund").style.backgroundColor = "red";
+            document.getElementById("knopfzeile").style.textAlign = "center";
+            document.getElementById("knopf").style.fontSize = "50px";
+            document.getElementById("knopf").style.borderRadius = "35px";
+            document.getElementById("knopf").style.padding = "10px 40px";
+      
+            function ändern() { 
+                rotWert = Math.floor(Math.random() * 256);
+                grünWert = Math.floor(Math.random() * 256);
+                blauWert = Math.floor(Math.random() * 256);
+                rgbWert = "rgb(" + rotWert + ", " + grünWert + ", " + blauWert + ")";
+                document.getElementById("hintergrund").style.backgroundColor = rgbWert;
+            }                            
+
+            zahl1 = Math.ceil(Math.random() * 100);
+            zahl2 = Math.ceil(Math.random() * 100);
+            zufallszahl = Math.ceil(Math.random() * 2);
+            if (zufallszahl == 1)
+                document.getElementById("aufgabe").innerHTML = zahl1 + " + " + zahl2;
+            else
+            
+            document.getElementById("aufgabe").style.cssText = "text-align: center; font-size: 40px";
+            document.getElementById("rechenzeile").style.textAlign = "center";
+            document.getElementById("eingabe").style.cssText = "height: 52px; width: 250px; font-size: 40px";
+            document.getElementById("auswertung").style.fontSize = "40px";
+
+            function auswertung() {
+            if (document.getElementById("eingabe").value == (zahl1 + zahl2) + "") {
+                document.getElementById("ergebnis").innerHTML = "Richtig!";
+                zahl1 = Math.ceil(Math.random() * 100);
+                zahl2 = Math.ceil(Math.random() * 100);
+                document.getElementById("eingabe").value = "";
+                document.getElementById("Aufgabe").innerHTML = zahl1 + " + " + zahl2;
+            }   else {
+                alert("Falsch!");
+            }   
+        }
+
+        </script>
+    <body/>
+</html>
+
+
+
+

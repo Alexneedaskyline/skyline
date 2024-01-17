@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Countdown</title>
+        <meta charset="UTF-8">
+        <style>
+            body {
+                background-image: url("silvester.jpg");
+                background-size: cover;
+                min-height: calc(100vh - 15px);
+                color: white;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            h1 {
+                font-size: 5vw;
+            }
+            h2 {
+                font-size: 2.5vw;
+            }
+            p {
+                font-size: 1,5vw;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>Bald ist Silvester</h1>
+
+        <div>
+            <h2 id="Wochen">00</h2>
+            <p>Wochen</p>
+        </div>
+        
+        <div>
+            
+            <h2 id="Tage">00</h2>
+            <p>Tage</p>
+        </div>
+
+        <div>
+            <h2 id="Stunden">00</h2>
+            <p>Stunden</p>
+        </div>
+
+        <div>
+            <h2 id="Minuten">00</h2>
+            <p>Minuten</p>
+        </div>
+
+        <div>
+            <h2 id="Sekunden">00</h2>
+            <p>Sekunden</p>
+        </div>
+
+ 
+        <script>
+            endZeit = new Date("January 01, 2025 00:00:00")
+
+            function zeitAktualisieren() {
+                aktuelleZeit = new Date();
+                verbleibendeZeit = endZeit - aktuelleZeit;
+
+                wochen = Math.floor(verbleibendeZeit / 1000 / 60 / 60 / 24 / 7); 
+                tage = Math.floor(verbleibendeZeit / 1000 / 60 / 60 / 24 % 7);
+                stunden = Math.floor(verbleibendeZeit / 1000 / 60 / 60) % 24;
+                minuten = Math.floor(verbleibendeZeit / 1000 / 60) % 60;
+                sekunden = Math.floor(verbleibendeZeit / 1000) % 60;
+                
+                
+                document.getElementById("Wochen").innerHTML = wochen; 
+                document.getElementById("Tage").innerHTML = tage;
+                document.getElementById("Stunden").innerHTML = stunden;
+                document.getElementById("Minuten").innerHTML = minuten;
+                document.getElementById("Sekunden").innerHTML = sekunden;
+            }
+
+            setInterval(zeitAktualisieren, 1000);
+        </script>
+    </body>
+</html>

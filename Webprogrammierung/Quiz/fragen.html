@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Quiz</title>
+        <style>
+            body {
+                text-align: center;
+                background-color: #1a1a1a;
+                color: white;
+            }
+            #frage {
+                font-size: 4.5vw;
+            }
+            button {
+                font-size: 3.5vw;
+                background-color: blueviolet;
+                border: none;
+                color: white;
+                padding-left: 3vw;
+                padding-top: 1vw;
+                padding-right: 3vw;
+                padding-bottom: 1vw;
+                border-radius: 1vw;
+                margin-left: 1vw;
+            }       
+        </style>
+    </head>
+    <body>
+        <p id="frage"></p>
+        <p>
+            <button id="0" onclick="auswertung(this.id)">Kiew</button>
+            <button id="1" onclick="auswertung(this.id)">Lwiw</button>
+            <button id="2" onclick ="auswertung(this.id)">Donetzk</button>
+            <button id="3" onclick="auswertung(this.id)">Marioupol</button>
+        </p>
+      
+        <script>
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms)); 
+            }
+            hintergrundliste = []
+            fragenliste = ["Wie heißt die Hauptstadt der Ukraine?", "wie nennt man das Männliche Geschlecht auf Englisch?", "Was ist das härteste Material?", "Was ist der aktuell meist gehörte US Rapper?", "In welchem Land wurde der fußball erfunden", "Welches Element hat das Chemische Symbol H"];
+            antwortenliste = [["Kiew", "Lwiw", "Donezk", "Marioupol"], ["Female", "male", "email", "female"], ["Gold", "Eisen", "Titan", "Diamant"], ["Playboy Carti", "Yeat", "Travis Scott", "kanye west"], ["Brasilien", "Deutschland", "England", "Frankreich"], ["Helium", "Lythium", "Kohlenstoff", "Wasserstoff"]];
+            richtigeAntwortListe = [0, 1, 3, 1, 2, 3];
+
+            fragenindex = 0;
+
+            document.getElementById("frage").innerHTML = fragenliste[fragenindex];
+
+            richtigeAntworten = 0;
+
+            blockiert = false;
+            
+
+             async function auswertung(id) { 
+                if ( ! blockiert) {
+                    blockiert = true;
+                if (id == richtigeAntwortListe[fragenindex]) { 
+                    document.getElementById(id).style.backgroundColor = "green";
+                    await sleep(1500);
+                    document.getElementById(id).style.backgroundColor = "blueviolet";
+                    richtigeAntworten += 1;
+                    fragenindex += 1;
+                if (fragenindex < fragenliste.length) { 
+                    document.getElementById("frage").innerHTML = fragenliste[fragenindex];
+                    document.getElementById("0").innerHTML = antwortenliste[fragenindex][0];
+                    document.getElementById("1").innerHTML = antwortenliste[fragenindex][1];
+                    document.getElementById("2").innerHTML = antwortenliste[fragenindex][2];
+                    document.getElementById("3").innerHTML = antwortenliste[fragenindex][3];
+                
+                } else {
+                    document.getElementById("frage").innerHTML = "Du hast " + richtigeAntworten + "von" + fragenliste.length + " Punkten erreicht!"
+                    document.getElementById("0").style.display = "none";
+                    document.getElementById("1").style.display = "none";
+                    document.getElementById("2").style.display = "none";
+                    document.getElementById("3").style.display = "none";
+                }
+
+
+                } else {
+                        document.getElementById(id).style.backgroundColor = "red";
+                        await sleep(1500)
+                        document.getElementById(id).style.backgroundColor = "#blueviolet";
+                        richtigeAntworten -= 1; 
+                    }
+                        blockiert = false;
+                    }
+                } 
+            </script>
+        </body>
+    </html>
