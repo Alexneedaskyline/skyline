@@ -13,7 +13,7 @@
             background-image: url("Zahlen.jpg");
             background-size: cover;
             font-family: 'Poppins', sans-serif;
-            min-height: 100vh;
+            min-height: 100vh; 
         }
         h1 {
             margin-top: 41vh;
@@ -62,8 +62,8 @@
             color: black;
             border-color: black;
             cursor: pointer;
-            transition-duration: 0.5s;
-            padding: 0.6vw  1.1vw;
+            transition-duration: 0.5s;      
+            padding: 0.6vw  1.1vw; 
         }
     </style>
 </head>
@@ -91,7 +91,7 @@
 
         finde = ["Finde die geheime Zahl!", "Guess the number"];
         rate = ["Los", "Guess"];
-        richtig = ["Neue Zahl", "new number"];
+        neuezahl = ["Neue Zahl", "new number"];
         zuKlein = ["Zu klein!", "Too small!"];
         zuGroß = ["Zu groß!", "Too big!"];
         
@@ -105,7 +105,7 @@
         }
         function spracheÄndern() {
             document.getElementById("pageTitle").innerHTML = finde[sprache];
-            document.getElementById("los").innerHTML = rate[sprache];
+            document.getElementById("los").innerHTML = rate[sprache];     
         }
         
         zufallszahl = Math.ceil(Math.random() * 100);
@@ -122,7 +122,7 @@
             versuch += 1;
             document.getElementById("versuch").innerHTML = "Versuch: " + versuch;
             if (document.getElementById("eingabe").value == zufallszahl) {
-                document.getElementById("ergebnis").innerHTML = richtig[sprache];
+                document.getElementById("ergebnis").innerHTML = neuezahl[sprache];
             } else if (document.getElementById("eingabe").value < zufallszahl) {
                 document.getElementById("ergebnis").innerHTML = zuKlein[sprache];
             } else {

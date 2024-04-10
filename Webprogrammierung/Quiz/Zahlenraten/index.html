@@ -12,15 +12,23 @@
             background-image: url("Zahlen.jpg");
             background-size: cover;
             font-family: 'Poppins', sans-serif;
-            min-height: 100vh;
+            min-height: 140vh;
         }
         h1 {
-            margin-top: 45vh;
+            margin-top: 10vh;
             font-size: 5vw;
             color: white;
             margin-bottom: 6vh;
         }
-        a {
+        h2 {
+            margin-top: 5vh;
+            font-size: 2vw;
+            color: red;
+            margin-bottom: 6vh;
+            font-family: cursive;
+            
+        }
+        a { 
             font-family: 'Poppins', sans-serif;
             font-size: 3.5vw;
             background-color: black;
@@ -28,6 +36,7 @@
             border-radius: 5vw;
             color: white;
             text-decoration: none;
+            margin-bottom: 10vh;
         }
         a:hover {
             font-family: 'Poppins', sans-serif;
@@ -38,6 +47,7 @@
             
         }
         button {
+        
             font-family: 'Poppins', sans-serif;
             font-size: 1.5vw;
             border-radius: 1.5vw;
@@ -59,7 +69,7 @@
             padding: 2.3vw 4.6vw;
         }
         input {
-            width: 20vw;
+            width: 30vw;
             height: 7vh;
             margin-bottom: 7vh;
             font-size: 3vw;
@@ -71,40 +81,64 @@
         input:focus {
             border-color: aqua;
         }
+        .placeholder {
+            position: relative;
+        }
     </style>
 </head>
 <body>
+    
+
     <div style="text-align: center;">
         <button onclick="deutsch()">Deutsch</button>
         <button onclick="englisch()">Englisch</button>
     </div>
     <h1 id="h1">Willkommen beim Zahlenrätsel</h1>
     <div>
-        <input placeholder="name eingeben!">
+        <input id="nameInput" placeholder="Name eingeben">
     </div>
-    <a href="zahlenraten.html">START</a>
+    <h2 id="h2">Das Passwort muss mindestens einen Großbuchstaben und eine Ziffer enthalten</h2>
+    <div>
+        <input type="password" id="passwordInput1" placeholder="Passwort eingeben">
+    </div>
+    <div>
+        <input type="password" id="passwordInput2" placeholder="Passwort bestätigen">
+    </div>
+    <a href="a" onclick="startGame()">START</a>
 
     <script>
         function deutsch() {
             document.getElementById("h1").innerHTML = "Willkommen beim Zahlenrätsel!";
-            document.getElementById("eingabe").placeholder = "Name eingeben";
+            document.getElementById("nameInput").placeholder = "Name eingeben";
             localStorage.setItem("sprache", "deutsch");
         }
 
         function englisch() {
             document.getElementById("h1").innerHTML = "Welcome to the number game!";
-            document.getElementById("eingabe").placeholder = "Insert name";
+            document.getElementById("nameInput").placeholder = "Insert name";
             localStorage.setItem("sprache", "englisch");
         }
-  
 
+        function startGame() {
+            var name = document.getElementById("nameInput").value;
+            var password1 = document.getElementById("passwordInput1").value;
+            var password2 = document.getElementById("passwordInput2").value;
 
-
-
-
-    <!--HA 20.03.2024: Füge in index.html ein eingabefeld ein, über das der Spieler seinen Namen eingeben kann.
-        Bei Klick auf Start wird sich dieser Name gemerkt (und zwar so dass im spiel wieder darauf zugegriffen werden kann)
-        In zahlenraten.html soll der Name denn an einer geeigneten Stelle angezweigt werden.-->
+            if (password1 === password2) {
+                alert("Spiel gestartet für " + name);
+                window.location.href = "zahlenraten.html";
+            } else {
+                alert("Die Passwörter stimmen nicht überein. Bitte überprüfen Sie Ihre Eingaben.");
+            }
+        }
     </script> 
 </body>
 </html>
+
+
+
+<!--
+    Lies nach wie man den java script ein dictionary verstellen kann 
+    Google: "dictionary javascript"
+    Erstelle dann in zahlenraten.html dann ein Dictionary in der variable dict, in dem der Schlüssel "leicht" der wert 10, mittel der wert 100 und schwer der wert 1000 zugeordnet ist.
+-->
