@@ -32,11 +32,11 @@
             font-family: 'Poppins', sans-serif;
             font-size: 3.5vw;
             background-color: black;
-            padding: 1vw 3vw;
+            padding: -0.5vw 3vw;
             border-radius: 5vw;
             color: white;
             text-decoration: none;
-            margin-bottom: 10vh;
+            margin-bottom: 1vh;
         }
         a:hover {
             font-family: 'Poppins', sans-serif;
@@ -99,23 +99,43 @@
     </div>
     <h2 id="h2">Das Passwort muss mindestens einen Großbuchstaben und eine Ziffer enthalten</h2>
     <div>
+        <input type="email" id="emailInput1" placeholder="Email eingeben">
+    </div>
+
+    <div>
         <input type="password" id="passwordInput1" placeholder="Passwort eingeben">
     </div>
+
     <div>
-        <input type="password" id="passwordInput2" placeholder="Passwort bestätigen">
+        <label for="difficulty">Schwierigkeitsgrad:</label>
+        <select id="difficulty">
+            <option value="leicht">Leicht</option>
+            <option value="mittel">Mittel</option>
+            <option value="schwer">Schwer</option>
+        </select>
     </div>
+
+    <button id="showPasswordButton" onclick="showPassword()">Passwort anzeigen</button>
+    
+
     <a href="a" onclick="startGame()">START</a>
 
     <script>
         function deutsch() {
             document.getElementById("h1").innerHTML = "Willkommen beim Zahlenrätsel!";
             document.getElementById("nameInput").placeholder = "Name eingeben";
+            document.getElementById("emailInput1").placeholder = "email eingeben";
+            document.getElementById("passwordInput1").placeholder = "passwort eingeben";
+            document.getElementById("showPasswordButton").placeholder = "Passwort eingeben";
             localStorage.setItem("sprache", "deutsch");
         }
 
         function englisch() {
             document.getElementById("h1").innerHTML = "Welcome to the number game!";
-            document.getElementById("nameInput").placeholder = "Insert name";
+            document.getElementById("nameInput").placeholder = "insert name";
+            document.getElementById("emailInput1").placeholder = "insert email";
+            document.getElementById("passwordInput1").placeholder = "insert password";
+            document.getElementById("showPasswordButton").placeholder = "show password";
             localStorage.setItem("sprache", "englisch");
         }
 
@@ -131,14 +151,21 @@
                 alert("Die Passwörter stimmen nicht überein. Bitte überprüfen Sie Ihre Eingaben.");
             }
         }
+        function showPassword() {
+                var passwordInput = document.getElementById("passwordInput1");
+                passwordInput.type = "text";
+            }
     </script> 
 </body>
 </html>
-
-
 
 <!--
     Lies nach wie man den java script ein dictionary verstellen kann 
     Google: "dictionary javascript"
     Erstelle dann in zahlenraten.html dann ein Dictionary in der variable dict, in dem der Schlüssel "leicht" der wert 10, mittel der wert 100 und schwer der wert 1000 zugeordnet ist.
+-->
+
+<!-- 24.04.2024
+Speichere die Gesamtzahl alles bisher gespielten Spiele ab (unabhängig davon, welcher Spieler sie gespielt hat).
+Zeige diese an einer geeigneten Stelle im Spiel oder auf der Startseite an 
 -->
