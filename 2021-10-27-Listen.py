@@ -1,4 +1,4 @@
- from _typeshed import IdentityFunction
+from _typeshed import IdentityFunction
 from os import X_OK
 
 

@@ -30,20 +30,24 @@
         }
         a { 
             font-family: 'Poppins', sans-serif;
-            font-size: 3.5vw;
-            background-color: black;
-            padding: -0.5vw 3vw;
-            border-radius: 5vw;
-            color: white;
-            text-decoration: none;
-            margin-bottom: 1vh;
+            font-size: 1.5vw;
+            border-radius: 1.5vw;
+            background-color: white;
+            border: 0.5vw solid black;
+            padding: 0.5vw 1vw;
+            margin-left: 1vw;
+            margin-top: 0.5vw;
+            text-shadow: none;
+            transition-duration: 1s;
         }
         a:hover {
             font-family: 'Poppins', sans-serif;
-            background-color: blue;
+            background-color: black;
             color: white;
+            border-color: white;
             cursor: pointer;
             transition-duration: 0.5s;
+            padding: 2.3vw 4.6vw;
             
         }
         button {
@@ -79,7 +83,7 @@
             outline: none;
         }
         input:focus {
-            border-color: aqua;
+            border-color: black;
         }
         .placeholder {
             position: relative;
@@ -114,13 +118,31 @@
             <option value="schwer">Schwer</option>
         </select>
     </div>
+    <div>
+        <p id="totalGames">Gesamtzahl der Spiele: <span id="gameCount">0</span></p>
+    </div>
 
     <button id="showPasswordButton" onclick="showPassword()">Passwort anzeigen</button>
     
 
     <a href="a" onclick="startGame()">START</a>
-
+    <a href="a" onclick="tutorial()">tutorial</a>
     <script>
+
+        function startGame() { 
+            var name = document.getElementById("nameInput").value;
+            var password1 = document.getElementById("passwordInput1").value;
+            var password2 = document.getElementById("passwordInput2").value;
+
+        }    if (password1 === password2)  {
+                totalGames++;
+                localStorage.setItem("totalGames", totalGames);
+                alert("Spiel gestartet für " + name);
+                window.location.href = "zahlenraten.html";
+
+        }   else {
+            alert("Die Passwörter stimmen nicht überein. Bitte überprüfen Sie Ihre Eingaben.");
+        } 
         function deutsch() {
             document.getElementById("h1").innerHTML = "Willkommen beim Zahlenrätsel!";
             document.getElementById("nameInput").placeholder = "Name eingeben";
@@ -138,7 +160,7 @@
             document.getElementById("showPasswordButton").placeholder = "show password";
             localStorage.setItem("sprache", "englisch");
         }
-
+        
         function startGame() {
             var name = document.getElementById("nameInput").value;
             var password1 = document.getElementById("passwordInput1").value;
@@ -159,13 +181,7 @@
 </body>
 </html>
 
-<!--
-    Lies nach wie man den java script ein dictionary verstellen kann 
-    Google: "dictionary javascript"
-    Erstelle dann in zahlenraten.html dann ein Dictionary in der variable dict, in dem der Schlüssel "leicht" der wert 10, mittel der wert 100 und schwer der wert 1000 zugeordnet ist.
--->
-
 <!-- 24.04.2024
-Speichere die Gesamtzahl alles bisher gespielten Spiele ab (unabhängig davon, welcher Spieler sie gespielt hat).
+Speichere die Gesamtzahl aller bisher gespielten Spiele ab (unabhängig davon, welcher Spieler sie gespielt hat).
 Zeige diese an einer geeigneten Stelle im Spiel oder auf der Startseite an 
 -->
