@@ -5,8 +5,10 @@ class Spiel(arcade.Window):
     def __init__(self, breite, höhe, titel):
         super().__init__(breite, höhe,titel)
         
-     
+                
+                
         self.background_music = arcade.Sound("Ton.wav")
+
         
         arcade.set_background_color(arcade.color.BLIZZARD_BLUE)
         
