@@ -1,7 +1,10 @@
 import pyglet
+pyglet.options["osx_alt_loop"] = True
+
 import arcade
 
-pyglet.options["osx_alt_loop"] = True
+
+
 
 class BC(arcade.Window):
     def __init__(self):
@@ -17,8 +20,10 @@ class BC(arcade.Window):
         self.b.center_y = self.height / 2
         self.b_b = 5
 
-        self.munition1 = arcade.Sprite("munition1.png")
-        self.
+        self.munition_list = arcade.SpriteList()
+
+        arcade.check_for_collision(sprite1="munition1", sprite2="munition2")
+
 
         
 
@@ -31,6 +36,22 @@ class BC(arcade.Window):
             self.a.change_y = -self.a_b
         elif symbol == arcade.key.D:
             self.a.change_x = self.a_b
+        
+        if symbol == arcade.key.E:
+            munition = arcade.Sprite("munition1.png")
+            munition.center_x = self.a.center_x
+            munition.center_y = self.a.center_y
+            munition.change_x = 10  
+            self.munition_list.append(munition)
+
+        if symbol == arcade.key.M:
+            munition = arcade.Sprite("munition2.png")
+            munition.center_x = self.b.center_x
+            munition.center_y = self.b.center_y
+            munition.change_x = -10  
+            self.munition_list.append(munition)
+
+
 
         if symbol == arcade.key.UP:
             self.b.change_y = self.b_b
@@ -40,9 +61,6 @@ class BC(arcade.Window):
             self.b.change_y = -self.b_b
         elif symbol == arcade.key.RIGHT:
             self.b.change_x = self.b_b
-
-        if object == arcade.key.E:
-            self.munition1.change
 
     def on_key_release(self, symbol, modifiers):
         if symbol in (arcade.key.W, arcade.key.S):
@@ -55,12 +73,17 @@ class BC(arcade.Window):
             self.b.change_x = 0
 
     def update(self, delta_time):
-
         self.a.center_x += self.a.change_x
         self.a.center_y += self.a.change_y
         self.b.center_x += self.b.change_x
         self.b.center_y += self.b.change_y
 
+       
+        self.munition_list.update()
+
+        for munition in self.munition_list:
+            if munition.center_x > self.width:
+                munition.remove_from_sprite_lists()
 
         if self.a.left < 0:
             self.a.left = 0
@@ -86,6 +109,8 @@ class BC(arcade.Window):
         self.clear()
         self.a.draw()
         self.b.draw()
+        self.munition_list.draw() 
+        
 
         middle_x = self.width / 2
         arcade.draw_line(
@@ -101,4 +126,3 @@ class BC(arcade.Window):
 if __name__ == "__main__":
     window = BC()
     arcade.run()
-
